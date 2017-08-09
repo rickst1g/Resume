@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Stephens Trips</title>
+		<script type="text/javascript">
+
+			var imagesRhine = [];
+			var imagesDanube = [];
+
+			function files_Load() {
+				for(i=0;i<194;i++){
+				var file_number = i + 641;
+				var file_name = ("DSC00" + file_number + ".jpg");
+				imagesRhine.push(file_name);
+				}
+
+				for(i=0;i<138;i++){
+					if (i<77){var file_number = "0" + (i + 23);
+					}
+					else if (i>105){var file_number = "DSC00" + (i + 740);
+					}
+					else {var file_number = i + 23;
+					}
+				var file_name = file_number + ".jpg";
+				imagesDanube.push(file_name);
+				}
+
+			}
+		</script>
+
+		<style>
+			#asideRhine{
+				float:left;
+				text-align:center;
+				width:50%;
+			}
+			#asideDanube{
+				float:right;
+				text-align:center;
+				width:50%;
+			}
+
+			img {
+				height:800px;
+				width:900px;
+				padding:10px;
+			}
+
+			/*body {
+				height:100%;
+				width:75%;
+			}*/
+
+			#wrapper {
+				height: 100%;
+				width: 100%;
+				/*margin-left: 25%;*/
+			}
+		</style>
+	</head>
+	<body onLoad="files_Load()">
+
+		<div id="wrapper">
+			<aside id="asideRhine">
+				<div id="divRhine">
+					<p><img id="slideimageRhine" name="imageRhine_0" src="images/trips/rhine/DSC00641.jpg" alt="Rhine Trip Pics" height=400 width=400 ></p>
+					<form name="formRhine">
+						<p>Rhine Trip<p>
+						<input type="button" id="prevbtnRhine" name="Rhine" value="Previous" onclick="previmage(name)">
+						<input type="button" id="nextbtnRhine" name="Rhine" value="Next" onclick="nextimage(name)">
+					</form>
+					<p id="whatpicRhine">Picture DSC00641.jpg</p>
+				</div>
+			</aside>
+
+			<aside id="asideDanube">
+				<div id="divDanube">
+					<p><img id="slideimageDanube" name="imageDanube_0" src="images/trips/danube/023.jpg" alt="Danube Trip Pics" height=600 width=600 ></p>
+					<form name="formDanube">
+						<p>Danube Trip<p>
+						<input type="button" id="prevbtnDanube" name="Danube" value="Previous" onclick="previmage(name)">
+						<input type="button" id="nextbtnDanube" name="Danube" value="Next" onclick="nextimage(name)">
+					</form>
+					<p id="whatpicDanube">Picture 023.jpg</p>
+				</div>
+			</aside>
+		</div>
+
+		<script type="text/javascript">
+			function nextimage(loc1) {
+				if (loc1=='Rhine'){
+					var img = document.getElementById("slideimage"+loc1);
+					var imgname = img.name.split("_");
+					var index = imgname[1];
+					if (index == imagesRhine.length - 1) {
+						index = 0;
+					}
+					else {
+						index++;
+					}
+					img.src = "images/trips/rhine/" + imagesRhine[index];
+					img.name = "imageRhine_" + index;
+					var comment = imagesRhine[index];
+			    	document.getElementById("whatpicRhine").innerHTML='Picture ' + comment;
+				}
+
+				if (loc1=='Danube'){
+					var img = document.getElementById("slideimageDanube");
+					var imgname = img.name.split("_");
+					var index = imgname[1];
+					if (index == imagesDanube.length - 1) {
+						index = 0;
+					}
+					else {
+						index++;
+					}
+					img.src = "images/trips/danube/" + imagesDanube[index];
+					img.name = "imageDanube_" + index;
+					var comment = imagesDanube[index];
+			    document.getElementById("whatpicDanube").innerHTML='Picture ' + comment;
+				}
+			};
+
+			function previmage(loc2) {
+				if (loc2=='Rhine'){
+					var img = document.getElementById("slideimageRhine");
+					var imgname = img.name.split("_");
+					var index = imgname[1];
+					if (index == 0) {
+						index = imagesRhine.length - 1;
+					}
+					else {
+						index--;
+					}
+					img.src = "images/trips/rhine/" + imagesRhine[index];
+					img.name = "imageRhine_" + index;
+					var comment = imagesRhine[index];
+			    	document.getElementById("whatpicRhine").innerHTML = "Picture " + comment;
+				}
+
+				if (loc2=='Danube'){
+					var img = document.getElementById("slideimageDanube");
+					var imgname = img.name.split("_");
+					var index = imgname[1];
+					if (index == 0) {
+						index = imagesDanube.length - 1;
+					}
+					else {
+						index--;
+					}
+					img.src = "images/trips/danube/" + imagesDanube[index];
+					img.name = "imageDanube_" + index;
+					var comment = imagesDanube[index];
+			    	document.getElementById("whatpicDanube").innerHTML = "Picture " + comment;
+				}
+			}
+		</script>
+	</body>
+</html>
