@@ -1,4 +1,3 @@
-
 //Work information
 var work = {
   "jobs": [{
@@ -132,7 +131,7 @@ bio.display = function() {
   for (var i = 0; i < contactInfo.length; i++) {
     $("#topContacts").append(contactInfo[i]);
     $("#footerContacts").append(contactInfo[i]);
-  };
+  }
   //Add picture under the horizontal line
   var formattedpic = HTMLbioPic.replace("%data%", bio.bioPic);
   $("#header").append(formattedpic);
@@ -150,7 +149,7 @@ bio.display = function() {
   }
 };
 
-bio.display()
+bio.display();
 
 //Function to add job information
 work.display = function() {
@@ -162,7 +161,7 @@ work.display = function() {
     var formattedWorkEmployer = HTMLworkEmployer.replace("%data%", job.employer);
     var formattedWorkTitle = HTMLworkTitle.replace("%data%", job.title);
     var formattedEmployerTitle = formattedWorkEmployer + formattedWorkTitle;
-    formattedEmployerTitle = formattedEmployerTitle.replace("#", job.url)
+    formattedEmployerTitle = formattedEmployerTitle.replace("#", job.url);
     $(".work-entry:last").append(formattedEmployerTitle);
     var formattedWorkLocation = HTMLworkLocation.replace("%data%", job.location);
     $(".work-entry:last").append(formattedWorkLocation);
@@ -172,7 +171,7 @@ work.display = function() {
     //Add work description
     var formattedWorkDescription = HTMLworkDescription.replace("%data%", job.description);
     $(".work-entry:last").append(formattedWorkDescription);
-  })
+  });
 };
 
 work.display();
@@ -183,7 +182,7 @@ projects.display = function() {
     for (i = 0; i < projects.projects.length; i++) {
       $("#projects").append(HTMLprojectStart);
       var projTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title);
-      projTitle = projTitle.replace("#", projects.projects[i].images.url)
+      projTitle = projTitle.replace("#", projects.projects[i].images.url);
       $(".project-entry:last").append(projTitle);
       var projDate = HTMLprojectDates.replace("%data%", projects.projects[i].date);
       $(".project-entry:last").append(projDate);
@@ -219,7 +218,7 @@ education.display = function() {
       $(".education-entry:last").append(formattedEdLocation);
       var formattedEdMajor = HTMLschoolMajor.replace("%data%", school.majors);
       $(".education-entry:last").append(formattedEdMajor);
-    })
+    });
   }
   $(".education-entry:last").append(HTMLonlineClasses);
   if (education.onlineCourses.length > 0) {
@@ -237,7 +236,7 @@ education.display = function() {
       $(".education-entry:last").append(formattedOlUrl);
     });
   }
-}
+};
 
 education.display();
 
@@ -249,15 +248,6 @@ function inName(name) {
   name[1] = name[1].toUpperCase();
   name = name.join(' ');
   return name;
-}
-
-function locationizer(work_obj) {
-  var workLocations = [];
-  for (var job in work_obj.jobs) {
-    var newLocation = work_obj.jobs[job].location;
-    workLocations.push(newLocation);
-  }
-  return workLocations;
 }
 
 //Map
